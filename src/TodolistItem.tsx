@@ -5,16 +5,23 @@ import { TodoListTitle } from "./TodoListtitle"
 
 type TodolistItemPropsType = {
     title: string
+    tasks: Array<TaskType>
 }
 
-export const TodolistItem = (props: TodolistItemPropsType) => {
+export type TaskType = {
+    id: number
+    title: string
+    isDone: boolean
+}
+
+export const TodolistItem = ({title, tasks}: TodolistItemPropsType) => {
     //console.log(props);
     
     return (
         <div>
-            <TodoListTitle title={props.title} />
+            <TodoListTitle title={title} />
             <AddtaskForm />
-            <TasksList />
+            <TasksList tasks={tasks}/>
             <FilterButtons />
         </div>
     )
